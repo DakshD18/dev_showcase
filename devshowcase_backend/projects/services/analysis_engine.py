@@ -665,6 +665,12 @@ CRITICAL RULES:
 3. DO NOT include React Router routes, Vue Router routes, Angular routes, or any frontend client-side routing (e.g. <Route path="/home">, createBrowserRouter, useNavigate, history.push, etc.)
 4. DO NOT include frontend page components or navigation links as endpoints.
 5. If this is a pure frontend project (React, Vue, Angular) with NO backend server code, return {{"endpoints": []}}
+6. VERY IMPORTANT: For request_schema and response_schema, you MUST analyze the code carefully to extract the EXACT fields that the endpoint expects and returns. Look at:
+   - Model/Schema definitions (Mongoose schemas, SQLAlchemy models, Django models, Pydantic models, JOI validators, etc.)
+   - Request body parsing (req.body fields, request.json, request.data, @Body() decorators, etc.)
+   - Response data being sent back (res.json(), return Response(), jsonify(), etc.)
+   - Validation rules, decorators, and type annotations
+   - Do NOT leave request_schema or response_schema empty if the code contains field information!
 
 Project Code:
 {code_text}
@@ -673,23 +679,32 @@ Return your response in this EXACT JSON format (no markdown, no extra text):
 {{
   "endpoints": [
     {{
-      "file": "path/to/file.js",
-      "line": 10,
-      "method": "GET",
+      "file": "routes/users.js",
+      "line": 15,
+      "method": "POST",
       "path": "/api/users",
-      "name": "Get Users",
-      "description": "Retrieves list of users",
+      "name": "Create User",
+      "description": "Creates a new user account",
       "auth_required": false,
       "auth_type": "",
       "path_parameters": [],
       "query_parameters": [],
-      "request_schema": {{}},
-      "response_schema": {{}}
+      "request_schema": {{
+        "username": {{"type": "string", "required": true, "description": "User's chosen username"}},
+        "email": {{"type": "string", "required": true, "description": "User's email address"}},
+        "password": {{"type": "string", "required": true, "description": "Account password"}}
+      }},
+      "response_schema": {{
+        "id": {{"type": "integer", "description": "Created user ID"}},
+        "username": {{"type": "string", "description": "User's username"}},
+        "email": {{"type": "string", "description": "User's email"}},
+        "created_at": {{"type": "string", "description": "ISO timestamp"}}
+      }}
     }}
   ]
 }}
 
-IMPORTANT: Include ALL backend API endpoints you find. If this is frontend-only with no server, return {{"endpoints": []}}.
+IMPORTANT: Include ALL backend API endpoints you find. Extract REAL field names and types from the code for request_schema and response_schema. If this is frontend-only with no server, return {{"endpoints": []}}.
 
 Return ONLY the JSON object, nothing else."""
         
