@@ -195,7 +195,7 @@ const ProjectUpload = ({ projectId, onUploadStart }) => {
     fontSize: '0.9rem',
     cursor: 'pointer',
     border: active ? 'none' : '1px solid var(--border-primary)',
-    background: active ? 'var(--accent-gradient)' : 'rgba(17,24,39,0.6)',
+    background: active ? 'var(--accent-primary)' : 'var(--bg-tertiary)',
     color: active ? 'white' : 'var(--text-secondary)',
     boxShadow: active ? 'var(--shadow-glow-sm)' : 'none',
     transition: 'all 0.25s ease',
@@ -254,7 +254,7 @@ const ProjectUpload = ({ projectId, onUploadStart }) => {
                 borderRadius: 'var(--radius-lg)',
                 padding: '3rem 2rem',
                 textAlign: 'center',
-                background: isDragging ? 'rgba(234,88,12,0.06)' : 'rgba(17,24,39,0.4)',
+                background: isDragging ? 'var(--info-bg)' : 'var(--bg-secondary)',
                 transition: 'all 0.25s ease',
                 cursor: 'pointer',
               }}
@@ -332,8 +332,8 @@ const ProjectUpload = ({ projectId, onUploadStart }) => {
                         htmlFor="files-upload" 
                         style={{
                           padding: '0.625rem 1.25rem',
-                          background: 'rgba(17,24,39,0.6)',
-                          color: 'var(--text-secondary)',
+                          background: 'var(--bg-tertiary)',
+                          color: 'var(--text-primary)',
                           border: '1px solid var(--border-primary)',
                           borderRadius: 'var(--radius-md)',
                           fontSize: '0.875rem',
@@ -477,8 +477,8 @@ const ProjectUpload = ({ projectId, onUploadStart }) => {
       <div style={{
         marginTop: '1.5rem',
         padding: '1.25rem',
-        background: 'rgba(234,88,12,0.06)',
-        border: '1px solid rgba(234,88,12,0.18)',
+        background: 'var(--info-bg)',
+        border: '1px solid var(--info-border)',
         borderRadius: 'var(--radius-lg)',
       }}>
         <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.65 }}>

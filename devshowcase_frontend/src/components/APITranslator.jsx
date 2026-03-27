@@ -75,7 +75,7 @@ const APITranslator = ({ projectId, endpoints }) => {
 
   return (
     <div style={{ 
-      background: 'rgba(17,24,39,0.4)', 
+      background: 'var(--bg-secondary)', 
       borderRadius: 'var(--radius-lg)', 
       padding: '2rem',
       border: '1px solid var(--border-secondary)'
@@ -124,8 +124,8 @@ const APITranslator = ({ projectId, endpoints }) => {
                   ? '2px solid var(--accent-primary)' 
                   : '1px solid var(--border-primary)',
                 background: selectedFramework === framework.id 
-                  ? 'rgba(234,88,12,0.1)' 
-                  : 'rgba(17,24,39,0.6)',
+                  ? 'var(--info-bg)' 
+                  : 'var(--bg-tertiary)',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease'
               }}

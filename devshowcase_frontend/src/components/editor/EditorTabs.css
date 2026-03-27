@@ -12,23 +12,23 @@
 }
 
 .editor-item {
-  background: rgba(17, 24, 39, 0.6);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-primary);
   border-left: 3px solid var(--accent-primary);
   border-radius: var(--radius-lg);
   padding: 1.25rem 1.5rem;
   margin-bottom: 1rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background var(--transition-base);
 }
 
 .editor-item:hover {
   border-color: var(--border-accent);
-  box-shadow: var(--shadow-glow-sm);
+  box-shadow: var(--shadow-sm);
 }
 
 .editor-item-title {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 0.4rem;
 }
@@ -41,16 +41,17 @@
 }
 
 .editor-form {
-  background: rgba(17, 24, 39, 0.5);
-  border: 1px solid var(--border-glass);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
   border-radius: var(--radius-lg);
   padding: 1.75rem;
   margin-top: 2rem;
+  transition: background var(--transition-base), border-color var(--transition-base);
 }
 
 .editor-form-title {
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.0625rem;
+  font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
   padding-bottom: 0.75rem;
@@ -58,10 +59,11 @@
 }
 
 .publish-status-card {
-  background: rgba(17, 24, 39, 0.5);
-  border: 1px solid var(--border-glass);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
   border-radius: var(--radius-lg);
   padding: 2rem;
+  transition: background var(--transition-base), border-color var(--transition-base);
 }
 
 .publish-status-text {

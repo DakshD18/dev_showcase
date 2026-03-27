@@ -68,8 +68,8 @@ const ProjectEdit = () => {
         </div>
 
         <div style={{
-          background: 'linear-gradient(135deg, rgba(234,88,12,0.10), rgba(219,39,119,0.07))',
-          border: '1px solid rgba(234,88,12,0.18)',
+          background: 'var(--bg-secondary)',
+          border: '1px solid var(--border-accent)',
           borderRadius: 'var(--radius-xl)',
           padding: '1.75rem 2.25rem',
           display: 'flex',
@@ -79,9 +79,12 @@ const ProjectEdit = () => {
           flexWrap: 'wrap',
           position: 'relative',
           overflow: 'hidden',
+          boxShadow: 'var(--shadow-glow-sm)',
         }}>
-          {/* Glow */}
-          <div style={{ position: 'absolute', right: -60, top: -60, width: 200, height: 200, borderRadius: '50%', background: 'rgba(219,39,119,0.12)', filter: 'blur(50px)', pointerEvents: 'none' }} />
+          {/* Blue accent bar on left */}
+          <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: '3px', background: 'var(--accent-gradient)', borderRadius: '3px 0 0 3px' }} />
+          {/* Subtle glow */}
+          <div style={{ position: 'absolute', right: -60, top: -60, width: 200, height: 200, borderRadius: '50%', background: 'var(--accent-glow)', filter: 'blur(50px)', pointerEvents: 'none' }} />
 
           <div style={{ position: 'relative', zIndex: 1 }}>
             <p style={{ fontSize: '0.78rem', color: 'var(--accent-primary)', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.3rem' }}>

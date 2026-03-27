@@ -77,17 +77,17 @@ const MagicLinkLogin = () => {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        {/* Background orbs */}
+        {/* Background orbs — theme-aware */}
         <div style={{
           position: 'absolute', top: '-100px', left: '-100px',
           width: '500px', height: '500px', borderRadius: '50%',
-          background: 'rgba(234,88,12,0.12)', filter: 'blur(80px)',
+          background: 'var(--hero-blob-a)', filter: 'blur(80px)',
           animation: 'blob-move 14s ease-in-out infinite', pointerEvents: 'none',
         }} />
         <div style={{
           position: 'absolute', bottom: '-80px', right: '-80px',
           width: '400px', height: '400px', borderRadius: '50%',
-          background: 'rgba(219,39,119,0.1)', filter: 'blur(80px)',
+          background: 'var(--hero-blob-b)', filter: 'blur(80px)',
           animation: 'blob-move 18s ease-in-out infinite reverse', pointerEvents: 'none',
         }} />
 
@@ -98,13 +98,13 @@ const MagicLinkLogin = () => {
           style={{ width: '100%', maxWidth: '440px', position: 'relative', zIndex: 1 }}
         >
           <div style={{
-            background: 'rgba(17,24,39,0.75)',
-            backdropFilter: 'blur(24px) saturate(200%)',
-            WebkitBackdropFilter: 'blur(24px) saturate(200%)',
-            border: '1px solid var(--border-glass)',
+            background: 'var(--bg-elevated)',
+            backdropFilter: 'blur(24px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+            border: '1px solid var(--border-primary)',
             borderRadius: 'var(--radius-xl)',
             padding: '2.75rem',
-            boxShadow: 'var(--shadow-xl)',
+            boxShadow: 'var(--shadow-xl), var(--shadow-glow-sm)',
           }}>
             <AnimatePresence mode="wait">
               {!emailSent ? (
@@ -123,7 +123,7 @@ const MagicLinkLogin = () => {
                     style={{ textAlign: 'center', marginBottom: '2rem' }}
                   >
                     <motion.div
-                      animate={{ boxShadow: ['0 0 20px rgba(234,88,12,0.3)', '0 0 40px rgba(219,39,119,0.55)', '0 0 20px rgba(234,88,12,0.3)'] }}
+                      animate={{ boxShadow: ['0 0 20px var(--accent-glow)', '0 0 40px var(--accent-glow-hover)', '0 0 20px var(--accent-glow)'] }}
                       transition={{ duration: 3, repeat: Infinity }}
                       style={{
                         width: 72, height: 72,
@@ -192,9 +192,9 @@ const MagicLinkLogin = () => {
                   <div style={{
                     marginTop: '1.75rem',
                     padding: '1rem 1.25rem',
-                    background: 'rgba(234,88,12,0.06)',
+                    background: 'var(--info-bg)',
                     borderRadius: 'var(--radius-md)',
-                    border: '1px solid rgba(234,88,12,0.14)',
+                    border: '1px solid var(--info-border)',
                   }}>
                     <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>
                       💡 <strong style={{ color: 'var(--text-primary)' }}>New here?</strong> We'll create your account automatically when you click the magic link.
@@ -227,9 +227,9 @@ const MagicLinkLogin = () => {
                   </p>
                   <div style={{
                     padding: '0.875rem 1.25rem',
-                    background: 'rgba(234,88,12,0.08)',
+                    background: 'var(--info-bg)',
                     borderRadius: 'var(--radius-md)',
-                    border: '1px solid rgba(234,88,12,0.15)',
+                    border: '1px solid var(--info-border)',
                     marginBottom: '1.75rem',
                   }}>
                     <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', margin: 0 }}>

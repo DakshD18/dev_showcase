@@ -124,7 +124,7 @@ const EndpointsTab = ({ project, onUpdate }) => {
           <div style={{
             padding: '3rem',
             textAlign: 'center',
-            background: 'rgba(17,24,39,0.4)',
+            background: 'var(--bg-secondary)',
             border: '2px dashed var(--border-secondary)',
             borderRadius: 'var(--radius-lg)',
             color: 'var(--text-muted)',
@@ -141,7 +141,7 @@ const EndpointsTab = ({ project, onUpdate }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
               style={{
-                background: 'rgba(17,24,39,0.6)',
+                background: 'var(--bg-secondary)',
                 border: '1px solid var(--border-primary)',
                 borderLeft: `3px solid ${methodColor[endpoint.method] || '#6b7280'}`,
                 borderRadius: 'var(--radius-lg)',
@@ -264,7 +264,7 @@ const EndpointsTab = ({ project, onUpdate }) => {
               {/* URL */}
               <div style={{
                 padding: '0.6rem 1rem',
-                background: 'rgba(10,15,30,0.6)',
+                background: 'var(--bg-tertiary)',
                 borderRadius: '6px',
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.875rem',

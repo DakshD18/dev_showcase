@@ -29,9 +29,9 @@ const PublishTab = ({ project, onUpdate }) => {
 
       <div style={{
         background: isPublished
-          ? 'linear-gradient(135deg, rgba(52,211,153,0.08), rgba(124,58,237,0.06))'
-          : 'rgba(17,24,39,0.5)',
-        border: `1px solid ${isPublished ? 'rgba(52,211,153,0.25)' : 'var(--border-glass)'}`,
+          ? 'var(--success-bg)'
+          : 'var(--bg-secondary)',
+        border: `1px solid ${isPublished ? 'var(--success-border)' : 'var(--border-secondary)'}`,
         borderRadius: 'var(--radius-xl)',
         padding: '2.5rem',
       }}>
@@ -43,7 +43,7 @@ const PublishTab = ({ project, onUpdate }) => {
             style={{
               width: 48, height: 48,
               borderRadius: '50%',
-              background: isPublished ? 'rgba(52,211,153,0.15)' : 'rgba(100,116,139,0.15)',
+              background: isPublished ? 'var(--success-bg)' : 'var(--bg-tertiary)',
               border: `2px solid ${isPublished ? 'var(--success)' : 'var(--border-secondary)'}`,
               display: 'flex',
               alignItems: 'center',
@@ -108,12 +108,12 @@ const PublishTab = ({ project, onUpdate }) => {
             </p>
             <div style={{
               padding: '0.75rem 1rem',
-              background: 'rgba(10,15,30,0.6)',
+              background: 'var(--bg-tertiary)',
               border: '1px solid var(--border-primary)',
               borderRadius: 'var(--radius-md)',
               fontFamily: 'var(--font-mono)',
               fontSize: '0.875rem',
-              color: 'var(--accent-cyan)',
+              color: 'var(--accent-primary)',
               wordBreak: 'break-all',
             }}>
               {window.location.origin}/project/{project.slug}
