@@ -628,8 +628,18 @@ class AnalysisEngine:
             'Express.js': '''Look for ALL route definitions including:
 - app.get(), app.post(), app.put(), app.delete(), app.patch()
 - router.get(), router.post(), router.put(), router.delete(), router.patch()
-- app.use() with route paths
+- app.use() with route paths AND mount prefixes (e.g., app.use('/v1', router))
 - Express Router instances
+
+CRITICAL FOR EXPRESS.JS: When you find app.use('/prefix', router) patterns, you MUST:
+1. Identify the mount path prefix (e.g., '/v1', '/api', '/api/v2', '/api/products', '/api/users')
+2. Track which router variable is mounted at that prefix (e.g., productRoutes, userRoutes, orderRoutes)
+3. For ALL routes defined on that router IN ANY FILE, COMBINE the mount path with the route path
+4. Example: app.use('/api/orders', orderRoutes) in server.js + router.post('/', ...) in orderRoutes.js = path should be '/api/orders'
+5. Example: app.use('/api/products', productRoutes) in server.js + router.get('/:id', ...) in productRoutes.js = path should be '/api/products/:id'
+6. The "path" field in your JSON response MUST be the COMPLETE URL path including ALL mount prefixes
+7. NEVER return routes without their mount prefix - if you see router.get('/') in a route file, find where that router is mounted in server.js/app.js
+
 Find EVERY endpoint, even if there are many in one file.''',
             'Flask': 'Look for ALL @app.route() and @blueprint.route() decorators',
             'Django': 'Look for ALL path() or url() calls in urls.py files',
@@ -672,6 +682,19 @@ CRITICAL RULES:
    - Validation rules, decorators, and type annotations
    - Do NOT leave request_schema or response_schema empty if the code contains field information!
 
+EXPRESS.JS MOUNT PATH EXAMPLE:
+If you see code like:
+  // In server.js or app.js:
+  app.use('/api/products', productRoutes);
+  app.use('/api/users', userRoutes);
+  
+  // In routes/productRoutes.js:
+  router.get('/:id', getProductById);
+  
+Then the complete path is: /api/products/:id (NOT just /:id)
+
+CRITICAL: If you find routes in separate files (like routes/productRoutes.js), you MUST look for where that router is mounted in the main server file (server.js, app.js, index.js) and include the mount prefix in the path.
+
 Project Code:
 {code_text}
 
@@ -704,7 +727,12 @@ Return your response in this EXACT JSON format (no markdown, no extra text):
   ]
 }}
 
+NOTE: The "path" field MUST include ALL mount prefixes from app.use(). 
+Example with mount path: If app.use('/v1', router) and router.post('/users'), then path = "/v1/users"
+
 IMPORTANT: Include ALL backend API endpoints you find. Extract REAL field names and types from the code for request_schema and response_schema. If this is frontend-only with no server, return {{"endpoints": []}}.
+
+CRITICAL FOR EXPRESS.JS: Before returning your response, verify that all endpoint paths include their mount prefixes from app.use(). The "path" field must be the COMPLETE URL path that the frontend will call (e.g., /v1/auth/register, NOT /auth/register).
 
 Return ONLY the JSON object, nothing else."""
         

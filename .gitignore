@@ -89,5 +89,3 @@ dump.rdb
 # Uploads
 uploads/
 temp/
-# Virtual environment
-venv/
